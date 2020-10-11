@@ -1,9 +1,9 @@
 import React from 'react'
 
-function Login() {
+const Login = () => {
   return (
     <>
-     <div>登录</div>
+      <div>登录</div>
     </>
   )
 }
