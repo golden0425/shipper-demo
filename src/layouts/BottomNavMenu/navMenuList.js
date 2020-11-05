@@ -22,7 +22,7 @@ export const navMenuList = [
   },
   {
     title: '我的',
-    key: ' My',
+    key: 'My',
     icon: Mine,
     selectedIcon: MineCheck,
     toPage: '/My'

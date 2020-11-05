@@ -4,14 +4,14 @@ let RouterConfig = [
   {
     path: '/',
     meta: 'Home',
-    icon: '', //  所用icon
+    name: '首页',
     role: [], //  适用权限
     component: asyncComponent(() => import('@/pages/Home'))
   },
   {
     path: '/Login',
     meta: 'Login',
-    icon: '', //  所用icon
+    name: '登录',
     role: [], //  适用权限
     component: asyncComponent(() =>
       import(/* webpackChunkName: 'home' */ '@/pages/Login')
@@ -20,7 +20,7 @@ let RouterConfig = [
   {
     path: '/Order',
     meta: 'Order',
-    icon: '', //  所用icon
+    name: '订单',
     role: [], //  适用权限
     component: asyncComponent(() =>
       import(/* webpackChunkName: 'home' */ '@/pages/Order')
@@ -29,13 +29,11 @@ let RouterConfig = [
   {
     path: '/My',
     meta: 'My',
-    icon: '', //  所用icon
+    name: '我的',
     role: [], //  适用权限
     component: asyncComponent(() =>
       import(/* webpackChunkName: 'home' */ '@/pages/My')
     )
   }
 ]
-console.log(RouterConfig)
-
 export default RouterConfig
