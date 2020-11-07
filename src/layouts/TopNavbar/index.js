@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { NavBar, Icon } from 'antd-mobile'
 import { connect } from 'react-redux'
+import styles from './index.scss'
 
 const TopNavbar = ({ currRoutePath, currRouteName }) => {
   let whiteList = ['Home', 'Login', 'Order', 'My']

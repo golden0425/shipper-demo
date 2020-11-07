@@ -1,5 +1,3 @@
-'use strict'
-
 const fs = require('fs')
 const path = require('path')
 const webpack = require('webpack')
@@ -461,10 +459,23 @@ module.exports = function(webpackEnv) {
               use: getStyleLoaders(
                 {
                   importLoaders: 3,
-                  sourceMap: isEnvProduction && shouldUseSourceMap
+                  sourceMap: isEnvProduction && shouldUseSourceMap,
+                  modules: {
+                    // 开启 module模式
+                    getLocalIdent: getCSSModuleLocalIdent
+                  }
                 },
                 'sass-loader'
-              ),
+              ).concat({
+                // 全局变变量
+                loader: 'sass-resources-loader',
+                options: {
+                  resources: [
+                    // 这里按照你的文件路径填写
+                    path.resolve(__dirname, "../src/assets/style/common.scss")
+                  ]
+                }
+              }),
               // Don't consider CSS imports dead code even if the
               // containing package claims to have no side effects.
               // Remove this when webpack adds a warning or an error for this.

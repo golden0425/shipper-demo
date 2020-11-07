@@ -2,8 +2,8 @@ import * as common from './action-type'
 import RouterConfig from '@/router/RouterConfig'
 
 let defaultState = {
-  currRoutePath: 'Home', //当前地址
-  currRouteName: '首页'
+  currRoutePath: 'Login', //当前地址
+  currRouteName: '登录'
 }
 // 当前路由
 export const routePathData = (state = defaultState, action = {}) => {

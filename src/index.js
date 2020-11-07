@@ -3,13 +3,12 @@ import ReactDOM from 'react-dom'
 import App from './App.js'
 import * as serviceWorker from '@/serviceWorker'
 
-// import LifeCircleContainer from '@/pages/demo'
-
 import FastClick from 'fastclick'
 import { Provider } from 'react-redux'
 import store from '@/store/store'
 import './utils/setRem'
-import '@/assets/style/global.scss' /*  + 引入全局公用样式global.scss文件 */
+import '@/assets/style/common.scss'
+
 
 FastClick.attach(document.body)
 
@@ -26,7 +25,6 @@ const render = Component => {
 }
 
 render(App)
-
 
 // ReactDOM.render(<LifeCircleContainer />, document.getElementById('root'))
 

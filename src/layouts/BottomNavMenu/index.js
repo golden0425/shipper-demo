@@ -2,16 +2,20 @@ import React, { useEffect, useState } from 'react'
 import { TabBar } from 'antd-mobile'
 import { navMenuList } from './navMenuList'
 import { connect } from 'react-redux'
-
-import './index.scss'
+import styles from './index.scss'
 
 const BottomNavMenu = ({ state, dispatch }) => {
   let currRoutePath = state.routePathData.currRoutePath
-  const [hidden, setHidden] = useState(false)
-  const [selectedTab, setSelectedTab] = useState('Home')
+  const [hidden, setHidden] = useState(true)
+  const [selectedTab, setSelectedTab] = useState('Login')
 
   useEffect(() => {
     setSelectedTab(currRoutePath)
+    if (currRoutePath === 'Login') {
+      setHidden(true)
+    }else{
+      setHidden(false)
+    }
   }, [currRoutePath])
 
   const navigetaTo = path => {
@@ -19,7 +23,7 @@ const BottomNavMenu = ({ state, dispatch }) => {
   }
 
   return (
-    <nav style={{ position: 'fixed', height: '100%', width: '100%', top: 0 }}>
+    <nav className={styles.navBox}>
       <TabBar
         unselectedTintColor="#949494"
         tintColor="#33A3F4"

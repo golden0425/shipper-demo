@@ -1,0 +1,71 @@
+$layout-header-height: 45px;
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+html {
+  /*隐藏滚动条，当IE下溢出，仍然可以滚动*/
+  -ms-overflow-style: none;
+  /*火狐下隐藏滚动条*/
+  overflow: -moz-scrollbars-none;
+}
+//谷歌适用
+::-webkit-scrollbar {
+  display: none;
+}
+
+.colorWeak {
+  filter: invert(80%);
+}
+
+.ant-layout {
+  min-height: 100vh;
+}
+
+canvas {
+  display: block;
+}
+
+body {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+//list组件 清除边框
+:global(html:not([data-scale]) .am-list-body::after .am-list-body::before) {
+  background-color: white;
+}
+
+html:not([data-scale]) .am-list-body::before .am-list-body::before {
+  background-color: white;
+}
+
+// 缺损页
+.common-noDataBox {
+  margin-top: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: column nowrap;
+
+  .noDataMsg {
+    margin-top: 8px;
+    font-family: PingFangSC-Regular;
+    color: rgba(153, 153, 153, 1);
+    font-size: 13px;
+  }
+}
+
+.refreshMinHeight {
+  min-height: 70vh;
+}
+
