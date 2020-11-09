@@ -1,25 +1,34 @@
 import React, { useState } from 'react'
-import { List, InputItem } from 'antd-mobile'
+import { List, InputItem, Toast, Button } from 'antd-mobile'
+
+import { checkPhone } from '@/utils/checkData'
 import styles from './index.scss'
+import WeChat from '@/assets/icon/login/WeChat.png'
 
-const Login = () => {
+const Login = ({ history }) => {
   const [hasError, setHasError] = useState(false)
-  const [value, setValue] = useState('')
+  const [phone, setPhone] = useState('')
 
-  const onErrorClick = () => {
-    if (hasError) {
-      // Toast.info('手机号格式不正确')
-    }
-  }
-
-  const onChange = value => {
-    console.log(value)
-    if (value.replace(/\s/g, '').length < 11) {
+  // 输入手机号校验
+  const onChange = phone => {
+    if (!checkPhone(phone.replace(/\s/g, ''))) {
       setHasError(true)
     } else {
       setHasError(false)
     }
-    setValue(value)
+    if (!phone) {
+      setHasError(false)
+    }
+    setPhone(phone)
+  }
+  const getCode = () => {
+    if (hasError || !phone) {
+      Toast.info('手机号格式不正确')
+      return
+    }
+    let userPhone = phone.replace(/ /g, '')
+    sessionStorage.setItem('phone', userPhone)
+    history.push({ pathname: '/CodeLogin', phone: userPhone })
   }
 
   return (
@@ -31,13 +40,24 @@ const Login = () => {
           type="phone"
           placeholder="请输入手机号"
           error={hasError}
-          onErrorClick={onErrorClick}
           onChange={onChange}
-          value={value}
+          value={phone}
           clear
-        >
-        </InputItem>
+        ></InputItem>
       </List>
+
+      <Button onClick={getCode} className={styles.getCodeButton} type="primary">
+        获取短信验证码
+      </Button>
+
+      <div className={styles.slogan}>未注册过的手机号验证后自动注册</div>
+      <div className={styles.pwdLogin}>密码登录</div>
+      <div className={styles.otherLogin}>第三方登录</div>
+      <img alt="WeChat" width="80px" height="80px" src={WeChat} />
+      <div className={styles.agreement}>
+        登录即代表同意 <span>《隐私政策》</span> 和
+        <span>《天地汇平台用户服务协议》</span>
+      </div>
     </div>
   )
 }

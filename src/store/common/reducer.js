@@ -3,7 +3,7 @@ import RouterConfig from '@/router/RouterConfig'
 
 let defaultState = {
   currRoutePath: 'Login', //当前地址
-  currRouteName: '登录'
+  currRouteName: ''
 }
 // 当前路由
 export const routePathData = (state = defaultState, action = {}) => {

@@ -8,15 +8,16 @@ const BottomNavMenu = ({ state, dispatch }) => {
   let currRoutePath = state.routePathData.currRoutePath
   const [hidden, setHidden] = useState(true)
   const [selectedTab, setSelectedTab] = useState('Login')
+  let blackList = ['Login', 'PwdLogin', 'CodeLogin']
 
   useEffect(() => {
     setSelectedTab(currRoutePath)
-    if (currRoutePath === 'Login') {
+    if (blackList.includes(currRoutePath)) {
       setHidden(true)
-    }else{
+    } else {
       setHidden(false)
     }
-  }, [currRoutePath])
+  }, [blackList, currRoutePath])
 
   const navigetaTo = path => {
     window.location.hash = path

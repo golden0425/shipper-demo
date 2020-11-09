@@ -1,4 +1,6 @@
 $layout-header-height: 45px;
+$button-default-color: #047cfc;
+
 
 html,
 body,
@@ -68,4 +70,3 @@ html:not([data-scale]) .am-list-body::before .am-list-body::before {
 .refreshMinHeight {
   min-height: 70vh;
 }
-

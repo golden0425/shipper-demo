@@ -1,18 +1,25 @@
 import React, { useEffect } from 'react'
 import { NavBar, Icon } from 'antd-mobile'
 import { connect } from 'react-redux'
+
 import styles from './index.scss'
 
-const TopNavbar = ({ currRoutePath, currRouteName }) => {
+const TopNavbar = ({ currRoutePath, currRouteName, history }) => {
   let whiteList = ['Home', 'Login', 'Order', 'My']
+  let iconList = ['Home', 'Login', 'Order', 'My', 'CodeLogin']
+
+  const goBack = () => {
+    window.history.back()
+  }
+
   return (
     <>
       <NavBar
         mode="light"
         icon={!whiteList.includes(currRoutePath) ? <Icon type="left" /> : ''}
-        onLeftClick={() => console.log('onLeftClick')}
+        onLeftClick={goBack}
         rightContent={
-          !whiteList.includes(currRoutePath)
+          !iconList.includes(currRoutePath)
             ? [
                 <Icon key="0" type="search" style={{ marginRight: '16px' }} />,
                 <Icon key="1" type="ellipsis" />
